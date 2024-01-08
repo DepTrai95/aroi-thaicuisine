@@ -62,12 +62,6 @@
    }
 }
 
-@mixin for-large-desktop-up {
-   @media (min-width: $breakpoint-desktop-large) {
-      @content;
-   }
-}
-
 @mixin for-big-desktop-up {
    @media (min-width: ($breakpoint-desktop-hd + 1)) {
       @content;
