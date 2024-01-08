@@ -1,0 +1,25 @@
+// ==========================================================================
+// = Variables
+// ==========================================================================
+$breakpoint-desktop-hd: 1920px;
+$breakpoint-desktop-large: 1640px;
+$breakpoint-desktop: 1280px;
+$breakpoint-tablet-landscape: 900px;
+$breakpoint-tablet-portrait: 600px;
+$breakpoint-phone: 320px;
+
+$content-max-width: 1810px;
+$content-padding: 60px;
+
+// black and white
+$color-white: #fff;
+$color-black: #000;
+
+// custom colors
+$background-color: #fbf8ef;
+$primary-color: #3b353b;
+$secondary-color: #c59458;
+$color-error: #d50042;
+
+// transition
+$transition-timing: ease-in-out .3s;
