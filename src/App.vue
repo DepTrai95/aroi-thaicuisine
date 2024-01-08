@@ -1,9 +1,10 @@
 <template>
-  <HelloWorld msg="Hallo ich bin das Template für alle Websites" />
+  <the-header />
+  <router-view />
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from './components/layout/header/TheHeader.vue';
 </script>
 
 <style lang="scss">
@@ -16,25 +17,9 @@ import HelloWorld from './components/HelloWorld.vue'
 
 html {
   background-color: $background-color;
-  color: $primary-color;
+  color: $color-primary;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 10px;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-//delete then
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 body {
@@ -58,11 +43,15 @@ main {
   }
 
   @include for-tablet-landscape-up {
-    padding: 0 140px;
+    padding: 0 60px;
   }
 
   @include for-desktop-up {
-    padding: 0 200px;
+    padding: 0 80px;
   }
+}
+
+img {
+  width: 100%;
 }
 </style>
