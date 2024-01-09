@@ -11,7 +11,7 @@ h3 {
 h1 {
    @include responsive-font-size(3.2rem, 7.2rem);
    line-height: 1.1;
-   margin-block-end: .55em;
+   margin-block: 1.5em;
 }
 
 h2 {
