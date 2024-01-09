@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../global.scss";
 
 li {
   padding-inline: 2rem;

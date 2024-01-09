@@ -1,7 +1,10 @@
 <template>
-  <button :class="mode">
-    {{ label }}
+  <button v-if="!link" :class="mode">
+    <slot></slot>
   </button>
+  <router-link v-else :to="to" :class="mode">
+      <slot></slot>
+    </router-link>
 </template>
 
 <script>
@@ -12,17 +15,27 @@ export default {
       required: false,
       default: "",
     },
-    label: {
+    link: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    to: {
       type: String,
       required: false,
-      default: "",
+      default: "/",
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../global.scss";
+button,
+a {
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+}
 
 .btn--primary,
 .btn--secondary {
@@ -30,9 +43,12 @@ export default {
   border: 1px solid transparent;
   border-radius: 4px;
   box-shadow: 0px 15px 20px 10px rgba(80, 80, 80, 0.2);
+  color: inherit;
   cursor: pointer;
   font-size: inherit;
   //font-weight: 500;
+  height: unset !important;
+  line-height: 1.3;
   margin-block: 1rem;
   min-height: 3em;
   padding: 8px 1.5em;

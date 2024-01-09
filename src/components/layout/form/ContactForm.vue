@@ -52,8 +52,7 @@
     <p v-if="!formIsValid">Bitte überprüfen Sie noch einmal ihre Angaben.</p>
     <base-button
       mode="btn--primary"
-      label="Reservierungsanfrage abschicken"
-    ></base-button>
+    >Nachricht abschicken</base-button>
   </form>
 </template>
 
@@ -116,7 +115,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../../../assets/styling/base.scss";
+// @import "./../../../assets/styling/base.scss";
 
 .form-group {
   margin-bottom: 2rem;
