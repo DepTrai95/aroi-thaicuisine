@@ -50,7 +50,7 @@ export default {
 }
 
 .btn--primary {
-  background-color: $color-secondary;
+  background-color: $color-primary;
   color: $color-white;
 }
 </style>

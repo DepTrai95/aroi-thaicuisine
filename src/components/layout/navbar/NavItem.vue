@@ -37,7 +37,7 @@ li {
     transition: color 0.2s ease-in;
 
     &:hover {
-      color: $color-secondary;
+      color: $color-primary;
     }
 
     &::before {
