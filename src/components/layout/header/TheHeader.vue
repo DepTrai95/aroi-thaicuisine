@@ -11,9 +11,9 @@
          <div class="nav-main__wrapper">
             <nav class="nav-main">
                <ul class="list--unstyled">
-                  <NavItem link="/home" label="Home" />
-                  <NavItem link="/menu" label="Menu" />
-                  <NavItem link="/contact" label="Contact" />
+                  <LinkRouter link="/home" label="Home" />
+                  <LinkRouter link="/menu" label="Menu" />
+                  <LinkRouter link="/contact" label="Contact" />
                </ul>
             </nav>
          </div>
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import NavItem from '../navbar/NavItem.vue';
+import LinkRouter from '../link/LinkRouter.vue';
 
 export default {
    components: {
-      NavItem,
+      LinkRouter,
    },
 }
 </script>
