@@ -13,6 +13,6 @@ import TheFooter from './components/layout/footer/TheFooter.vue';
 
 <style lang="scss">
 section {
-  margin-bottom: 5em;
+  margin-bottom: 4em;
 }
 </style>

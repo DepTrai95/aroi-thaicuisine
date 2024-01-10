@@ -16,7 +16,7 @@
         >Zur Speisekarte</base-button>
       </div>
       <!-- <img src="../../../assets/img/red-curry.webp" alt="" class="margin-top" loading="lazy" height="1280" width="1920"/> -->
-      <img src="../../../assets/img/red-curry.webp" alt="" class="margin-top" loading="lazy"/>
+      <img src="../../../assets/img/red-curry.webp" alt="" class="margin-top"/>
 
     </div>
   </section>

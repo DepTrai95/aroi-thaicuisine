@@ -8,7 +8,7 @@
     <div class="inner">
       <div class="grid--default grid-2--tablet-landscape-up">
         <div class="grid-item">
-          <h2>BOOK A TABLE</h2>
+          <h2>Book a Table</h2>
           <!-- <h1>Kontaktformular</h1> -->
           <p class="reservation-info">
             Wir nehmen jeden Tag gerne Reservierungen entgegen und sind zu
