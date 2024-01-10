@@ -1,12 +1,14 @@
 <template>
-  <div class="inner">
-    <h1 class="text-center">Our Menu</h1>
-  </div>
-  <div class="inner">
-    <div class="text-center">
-      <base-button mode="btn--primary">Schau dir unsere Speisekarte an</base-button>
+  <section>
+    <div class="inner">
+      <h1 class="text-center">Our Menu</h1>
     </div>
-  </div>
+    <div class="inner">
+      <div class="text-center">
+        <base-button mode="btn--primary">Schau dir unsere Speisekarte an</base-button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>

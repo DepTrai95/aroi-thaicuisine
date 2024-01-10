@@ -4,6 +4,7 @@ import { createWebHistory } from "vue-router";
 import Home from "./components/pages/home/Home.vue";
 import OurMenu from "./components/pages/menu/OurMenu.vue";
 import ContactUs from "./components/pages/contact/ContactUs.vue";
+import Impress from "./components/pages/impress/Impress.vue";
 import NotFound from "./components/pages/NotFound.vue";
 
 const router = createRouter({
@@ -13,6 +14,7 @@ const router = createRouter({
     { path: "/home", component: Home },
     { path: "/menu", component: OurMenu },
     { path: "/contact", component: ContactUs },
+    { path: "/impressum", component: Impress },
     { path: "/:notFound(.*)", component: NotFound },
   ],
 });
