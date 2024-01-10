@@ -16,7 +16,9 @@
             <span>{{ lunchTime }}</span>
             <span>{{ dinnerTime }}</span>
             telefonisch erreichbar unter:
-            <a class="link" :href="'tel:' + phoneNumber">{{ phoneNumber }}</a>
+            <li>
+              <a class="link" :href="'tel:' + phoneNumber">{{ phoneNumber }}</a>
+            </li>
           </p>
         </div>
         <div class="grid-item">

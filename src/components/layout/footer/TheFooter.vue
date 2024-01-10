@@ -3,7 +3,7 @@
     <!-- Adresse und Öffnungszeiten -->
     <div class="footer-content">
       <div class="footer-content_info">
-        <h4>AROI - Thai Cuisine</h4>
+        <h3>AROI - Thai Cuisine</h3>
         <p>Louisenstraße 30<br />01099 Dresden</p>
       </div>
       <div class="footer-content_info">
