@@ -11,7 +11,7 @@
          <div class="nav-main__wrapper">
             <nav class="nav-main">
                <ul class="list--unstyled">
-                  <LinkRouter link="/home" label="Home" />
+                  <LinkRouter link="/" label="Home" />
                   <LinkRouter link="/menu" label="Menu" />
                   <LinkRouter link="/contact" label="Contact" />
                </ul>
