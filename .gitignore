@@ -27,3 +27,4 @@ sendgrid.env
 # Local Netlify folder
 .netlify
 sendgrid.env
+*.env
