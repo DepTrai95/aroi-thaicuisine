@@ -31,3 +31,9 @@ export default {
    }
 }
 </script>
+
+<style scoped>
+p {
+  font-weight: 500;
+}
+</style>

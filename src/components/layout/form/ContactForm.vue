@@ -58,7 +58,6 @@
 
 <script>
 export default {
-  emits: ["save-data"],
   data() {
     return {
       name: {
@@ -86,7 +85,7 @@ export default {
         this.name.isValid = false;
         this.formIsValid = false;
       }
-      if (this.email.val === "" || !this.email.includes('@') || this.email.val < 8) {
+      if (this.email.val === "" || !this.email.val.includes('@') || this.email.val < 8) {
         this.email.isValid = false;
         this.formIsValid = false;
       }
@@ -95,28 +94,51 @@ export default {
         this.formIsValid = false;
       }
     },
-    submitForm() {
+    async submitForm() {
       this.validateForm();
 
       if (!this.formIsValid) {
+        console.log('Form validation failed!');
         return;
+      } else {
+        const formData = {
+          name: this.name.val,
+          email: this.email.val,
+          message: this.message.val,
+        };
+
+        try {
+
+          const headers = {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          };
+
+          const response = await fetch('/.netlify/functions/sendEmail', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              to: 'dennidnguyen@yahoo.de', // Setzen Sie hier die E-Mail des Empfängers
+              name: formData.name,
+              email: formData.email,
+              message: formData.message,
+            }),
+          });
+        } catch (error) {
+          console.error('Fehler beim Senden der E-Mail:', error);
+        };
+
+        console.log('Form submitted successfully!');
       }
-
-      const formData = {
-        name: this.name.val,
-        email: this.email.val,
-        message: this.message.val,
-      };
-
-      //this.$emit("save-data", formData);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-// @import "./../../../assets/styling/base.scss";
-
 .form-group {
   margin-bottom: 2rem;
 }
