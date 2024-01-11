@@ -1,35 +1,34 @@
-const sgMail = require("@sendgrid/mail");
+import sgMail from '@sendgrid/mail';
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-export const handler = async (event, context) => {
-   console.log('test');
-  try {
-   //  console.log('Function called with event:', event);
-   //  const { to, name, email, message } = JSON.parse(event.body);
 
-   //  console.log('Parsed JSON:', { to, subject, text });
+export const handler = async (event, context) => {
+  try {
+   const { to, name, email, text, date } = JSON.parse(event.body);
 
     const msg = {
-      to: 'dennidnguyen@yahoo.de',
-      from: "info@somico-delivery.de",
-      name: 'Dennis',
-      email: 'test@test.de',
-      message: 'Hallo du Gurke, gucken ob dis geht',
+      to: to,
+      from: 'info@aroi-dresden.de',
+      subject: `Reservierung für den: ${date}`,
+      text: text,
+      replyTo: {
+         email: email,
+         name: name,
+      },
     };
 
     await sgMail.send(msg);
-
-    console.log('Email sent successfully');
+    console.log('Email erfolgreich verschickt.');
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent successfully' }),
+      body: JSON.stringify({ message: 'Email erfolgreich verschickt' }),
     };
   } catch (error) {
     console.error('Error:', error);
-    
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Error sending email' }),
+      body: JSON.stringify({ error: 'Fehler beim verschicken der E-Mail!' }),
     };
   }
 };

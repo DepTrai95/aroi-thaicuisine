@@ -1,9 +1,8 @@
 <template>
   <form @submit.prevent="submitForm">
+    <!-- NAME -->
     <div class="form-group" :class="{ invalid: !name.isValid }">
-      <label for="name">
-        Name <abbr title="Pflichtfeld">*</abbr>
-      </label>
+      <label for="name"> Name <abbr title="Pflichtfeld">*</abbr> </label>
       <input
         class="form-control"
         type="text"
@@ -16,10 +15,9 @@
         Bitte geben Sie Ihren Namen an.
       </p>
     </div>
+    <!-- EMAIL -->
     <div class="form-group" :class="{ invalid: !email.isValid }">
-      <label for="email">
-        E-Mail <abbr title="Pflichtfeld">*</abbr>
-      </label>
+      <label for="email"> E-Mail <abbr title="Pflichtfeld">*</abbr> </label>
       <input
         class="form-control"
         type="email"
@@ -32,6 +30,34 @@
         Das E-Mail Feld darf nicht leer sein!
       </p>
     </div>
+    <!-- DATEPICKER -->
+    <div class="form-group" :class="{ invalid: !selectedDate.isValid }">
+      <label for="selectedDate">
+        Datum und Zeit <abbr title="Pflichtfeld">*</abbr>
+      </label>
+      <Calendar
+        v-model="selectedDate.val"
+        showIcon
+        inputId="selectedDate"
+        iconDisplay="input"
+        dateFormat="dd.mm.yy"
+        showTime
+        hourFormat="24"
+        :minDate="minDate"
+        :maxDate="maxDate"
+        :manualInput="false"
+        class="customCalendarStyle"
+        @blur="clearValidity('selectedDate')"
+        placeholder="DD/MM/YYYY - HH:MM"
+      />
+      <p
+        v-if="!selectedDate.isValid"
+        :class="{ invalid: !selectedDate.isValid }"
+      >
+        Es muss ein Datum ausgewählt sein
+      </p>
+    </div>
+    <!-- MESSAGE -->
     <div class="form-group" :class="{ invalid: !message.isValid }">
       <label for="message">
         Nachricht <abbr title="Pflichtfeld">*</abbr>
@@ -39,7 +65,7 @@
       <textarea
         class="form-control"
         id="message"
-        rows="10"
+        rows="7"
         v-model.trim="message.val"
         @blur="clearValidity('message')"
         placeholder="Ihre Nachricht"
@@ -50,9 +76,7 @@
     </div>
 
     <p v-if="!formIsValid">Bitte überprüfen Sie noch einmal ihre Angaben.</p>
-    <base-button
-      mode="btn--primary"
-    >Nachricht abschicken</base-button>
+    <base-button mode="btn--primary">Nachricht abschicken</base-button>
   </form>
 </template>
 
@@ -72,7 +96,13 @@ export default {
         val: "",
         isValid: true,
       },
+      selectedDate: {
+        val: "",
+        isValid: true,
+      },
       formIsValid: true,
+      minDate: null,
+      maxDate: null,
     };
   },
   methods: {
@@ -85,55 +115,97 @@ export default {
         this.name.isValid = false;
         this.formIsValid = false;
       }
-      if (this.email.val === "" || !this.email.val.includes('@') || this.email.val < 8) {
+      if (
+        this.email.val === "" ||
+        !this.email.val.includes("@") ||
+        this.email.val < 8
+      ) {
         this.email.isValid = false;
         this.formIsValid = false;
+      }
+
+      if (this.selectedDate.val === "") {
+        this.selectedDate.isValid = false;
+        this.formIsValid = false;
+        console.log("Selected date is not valid");
       }
       if (this.message.val === "") {
         this.message.isValid = false;
         this.formIsValid = false;
       }
     },
+    formatDate(string) {
+      const curDateString = string.toString().substring(4, 21).split(" ");
+
+      const monthNames = {
+        Jan: "01",
+        Feb: "02",
+        Mar: "03",
+        Apr: "04",
+        May: "05",
+        Jun: "06",
+        Jul: "07",
+        Aug: "08",
+        Sep: "09",
+        Oct: "10",
+        Nov: "11",
+        Dec: "12",
+      };
+
+      const day = curDateString[1];
+      const month = monthNames[curDateString[0]];
+      const year = curDateString[2];
+      const time = curDateString[3];
+
+      const formattedDate = `${day}.${month}.${year} - ${time} Uhr`;
+      return formattedDate;
+    },
     async submitForm() {
       this.validateForm();
 
       if (!this.formIsValid) {
-        console.log('Form validation failed!');
+        console.log("Form validation failed!");
         return;
       } else {
         const formData = {
           name: this.name.val,
           email: this.email.val,
           message: this.message.val,
+          date: this.formatDate(this.selectedDate.val),
         };
 
         try {
-
-          const headers = {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-          };
-
-          const response = await fetch('/.netlify/functions/sendEmail', {
-            method: 'POST',
+          const response = await fetch("/.netlify/functions/sendEmail", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              to: 'dennidnguyen@yahoo.de', // Setzen Sie hier die E-Mail des Empfängers
+              to: "info@aroi-dresden.de", // Setzen Sie hier die E-Mail des Empfängers
               name: formData.name,
               email: formData.email,
-              message: formData.message,
+              text: formData.message,
+              date: formData.date,
             }),
           });
-        } catch (error) {
-          console.error('Fehler beim Senden der E-Mail:', error);
-        };
 
-        console.log('Form submitted successfully!');
+          // console.log(response.body);
+        } catch (error) {
+          console.error("Fehler beim Abschicken des Kontaktformulars:", error);
+        }
+
+        this.$router.push("/success");
       }
     },
+  },
+  mounted() {
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 1);
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 12);
+
+    this.minDate = currentDate;
+    this.maxDate = maxDate;
   },
 };
 </script>
@@ -144,12 +216,12 @@ export default {
 }
 
 .form-control {
+  @include responsive-font-size(1.6rem, 1.8rem);
   border: 2px solid transparent;
   border-radius: 4px;
   display: block;
   color: $color-body;
   font-family: inherit;
-  font-size: 1.6rem;
   min-height: 5rem;
   line-height: 1.3;
   padding: 1rem 2rem;
@@ -157,7 +229,7 @@ export default {
   width: 100%;
 
   &:hover,
-  &:focus { 
+  &:focus {
     border-color: $color-primary;
   }
 
@@ -167,18 +239,22 @@ export default {
 }
 
 label {
+  @include responsive-font-size(1.6rem, 1.8rem);
   color: $color-body;
   display: block;
-  font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 1rem;
+}
+
+textarea {
+  resize: vertical;
 }
 
 .invalid {
   label,
   p {
+    @include responsive-font-size(1.6rem, 1.8rem);
     color: $color-error;
-    font-size: 1.6rem;
     margin-top: 0.5rem;
   }
 
@@ -186,5 +262,62 @@ label {
   textarea {
     border: 1px solid $color-error;
   }
+}
+</style>
+
+<style lang="scss">
+.p-calendar {
+  border-radius: 4px;
+  border: 2px solid transparent;
+  color: $color-body;
+  min-height: 5rem;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 100%;
+}
+
+.p-inputtext {
+  @include responsive-font-size(1.6rem, 1.8rem);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  box-shadow: none;
+  color: $color-body;
+  padding: 1rem 2rem;
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    border-color: $color-primary;
+  }
+
+  &:focus {
+    background-color: $color-background;
+  }
+}
+.p-datepicker-month,
+.p-datepicker-year,
+.p-hour-picker > span,
+.p-minute-picker > span {
+  @include responsive-font-size(1.8rem, 2rem);
+  padding: 1.5rem 0;
+}
+
+.p-datepicker td > span {
+  padding: 2rem;
+}
+
+.p-datepicker-trigger-icon {
+  height: 2rem;
+  margin-top: -1rem;
+  width: 2rem;
+}
+
+.p-component,
+.p-datepicker-calendar {
+  @include responsive-font-size(1.6rem, 1.8rem);
+}
+
+.p-datepicker .p-monthpicker .p-monthpicker-month {
+  padding: 1rem;
 }
 </style>

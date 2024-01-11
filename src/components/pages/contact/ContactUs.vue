@@ -32,6 +32,7 @@
 <script>
 import ContactForm from "../../layout/form/ContactForm.vue";
 
+
 export default {
   components: {
     ContactForm,
