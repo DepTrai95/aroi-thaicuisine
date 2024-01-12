@@ -55,4 +55,11 @@ export default {
    justify-content: flex-end;
    align-items: center;
 }
+
+.nav-main {
+   li {
+      padding-inline: 2rem;
+      text-align: center;
+   }
+}
 </style>

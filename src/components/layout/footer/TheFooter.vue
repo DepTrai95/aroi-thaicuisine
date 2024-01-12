@@ -15,8 +15,8 @@
 
     <!-- Social Media und Impressum -->
     <ul class="footer-links">
-        <LinkRouter link="/impressum" label="Impressum" />
-        <LinkRouter link="/menu" label="Menu" />
+      <LinkRouter link="/impressum" label="Impressum" />
+      <LinkRouter link="/menu" label="Menu" />
       <li>
         <a href="https://www.facebook.com/p/Aroi-Thai-Cuisine-100078777161780/"
           >Aroi on Facebook</a
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-import LinkRouter from '../link/LinkRouter.vue';
- 
+import LinkRouter from "../link/LinkRouter.vue";
+
 export default {
-   components: {
-      LinkRouter,
-   },
-}
+  components: {
+    LinkRouter,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -56,6 +56,11 @@ export default {
   margin: 0;
   padding: 2em 0;
   text-align: center;
+
+  li {
+    padding-inline: 2rem;
+    text-align: center;
+  }
 
   a {
     color: #fff;

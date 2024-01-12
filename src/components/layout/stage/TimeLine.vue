@@ -56,9 +56,9 @@ export default {
             "Unsere Service-Mitarbeiter verfügen über langjährige Erfahrung und setzen stets ihr Bestes ein, um einen erstklassigen Service zu bieten.",
         },
         {
-          headline: "Entspannte Atmossphöre",
+          headline: "Entspannte Atmosphäre",
           description:
-            "Genieße eine gemütliche und einladene Atmossphäre, welche euren Restaurant-Besuch bereichern wird",
+            "Genieße eine gemütliche und einladene Atmosphäre, welche euren Restaurant-Besuch bereichern wird",
         },
       ],
     };

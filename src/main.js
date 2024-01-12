@@ -4,7 +4,7 @@ import router from './router.js';
 import Button from './components/layout/ui/BaseButton.vue';
 
 // PrimeVue Testing
-import "primeicons/primeicons.css";
+// import "primeicons/primeicons.css";
 import 'primevue/resources/themes/lara-light-amber/theme.css';
 import PrimeVue from 'primevue/config';
 import Card from 'primevue/card';
