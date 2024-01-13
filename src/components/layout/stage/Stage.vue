@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin-bottom: 0.25em;
+}
+
 p {
   font-weight: 500;
 }

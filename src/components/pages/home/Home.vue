@@ -1,6 +1,8 @@
 <template>
-   <stage />
-   <time-line></time-line>
+   <div>
+      <stage />
+      <time-line></time-line>
+   </div>
 </template>
 
 <script>

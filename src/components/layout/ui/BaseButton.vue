@@ -39,10 +39,10 @@ a {
 
 .btn--primary,
 .btn--secondary {
-  background: transparent;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 4px;
-  box-shadow: 0px 15px 20px 10px rgba(80, 80, 80, 0.2);
+  box-shadow: 0px 5px 20px 5px rgba(80, 80, 80, 0.2);
   color: inherit;
   cursor: pointer;
   font-size: inherit;
@@ -53,10 +53,10 @@ a {
   min-height: 3em;
   padding: 8px 1.5em;
   text-decoration: none;
-  transition: box-shadow 0.2s ease-in;
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in;
 
   &:hover {
-    box-shadow: 0px 15px 20px 5px rgba(80, 80, 80, 0.3);
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.3);
   }
 
   + .btn--primary,
@@ -68,5 +68,11 @@ a {
 .btn--primary {
   background-color: $color-primary;
   color: $color-white;
+
+  // &:hover {
+  //   background-color: transparent;
+  //   border-color: $color-primary;
+  //   color: $color-primary;
+  // }
 }
 </style>

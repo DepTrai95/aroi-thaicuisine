@@ -74,7 +74,21 @@
         Nachricht darf nicht leer sein
       </p>
     </div>
-
+    <!-- RECHENAUFGABE -->
+    <div class="form-group" :class="{ invalid: !mathProblem.isValid }">
+      <label for="mathProblem">Rechenaufgabe: {{ mathProblem.example }} <abbr title="Pflichtfeld">*</abbr></label>
+      <input
+        class="form-control"
+        type="number"
+        id="mathProblem"
+        v-model.trim="mathProblem.val"
+        @blur="clearValidity('mathProblem')"
+        placeholder="Lösen Sie die Rechenaufgabe"
+      />
+      <p v-if="!mathProblem.isValid" :class="{ invalid: !mathProblem.isValid }">
+        Bitte lösen Sie die Rechenaufgabe korrekt.
+      </p>
+    </div>
     <p v-if="!formIsValid">Bitte überprüfen Sie noch einmal ihre Angaben.</p>
     <base-button mode="btn--primary">Nachricht abschicken</base-button>
   </form>
@@ -100,6 +114,7 @@ export default {
         val: "",
         isValid: true,
       },
+      mathProblem: { val: '', isValid: true, example: generateRandomMathProblem() },
       formIsValid: true,
       minDate: null,
       maxDate: null,
@@ -127,7 +142,11 @@ export default {
       if (this.selectedDate.val === "") {
         this.selectedDate.isValid = false;
         this.formIsValid = false;
-        console.log("Selected date is not valid");
+      }
+      const correctAnswer = eval(this.mathProblem.example);
+      if (parseInt(this.mathProblem.val, 10) !== correctAnswer) {
+        this.mathProblem.isValid = false;
+        this.formIsValid = false;
       }
       if (this.message.val === "") {
         this.message.isValid = false;
@@ -181,7 +200,7 @@ export default {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              to: "info@aroi-dresden.de", // Setzen Sie hier die E-Mail des Empfängers
+              to: "info@aroi-dresden.de", // set email of receiver
               name: formData.name,
               email: formData.email,
               text: formData.message,
@@ -208,6 +227,13 @@ export default {
     this.maxDate = maxDate;
   },
 };
+
+function generateRandomMathProblem() {
+  const num1 = Math.floor(Math.random() * 10) + 1;
+  const num2 = Math.floor(Math.random() * 10) + 1;
+  const operator = '+';
+  return `${num1} ${operator} ${num2}`;
+}
 </script>
 
 <style lang="scss" scoped>

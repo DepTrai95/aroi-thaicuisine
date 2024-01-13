@@ -1,35 +1,50 @@
 <template>
-  <section>
-    <div class="inner">
-      <h1 class="text-center">Our Menu</h1>
-    </div>
-    <div class="inner">
-      <div class="text-center">
-        <base-button @click="loadMenu" mode="btn--primary" v-show="buttonIsVisible">
-          Schau dir unsere Speisekarte an
-        </base-button>
-        <ProgressSpinner
-          v-if="isLoading"
-          style="width: 50px; height: 50px; margin-top: 10px"
-        />
+  <div>
+    <section>
+      <div class="inner">
+        <h1 class="text-center">Our Menu</h1>
       </div>
-      <div v-if="menuCategory" class="menu">
-        <div :key="menuCategory.categories" class="grid--default grid-2--tablet-landscape-up">
-          <div v-for="category in menuCategory" :key="category.name" class="menu-item__item-category grid-item">
-            <h2>{{ category.name }}</h2>
-            <ul>
-              <base-menu-item
-                v-for="menuItem in category.items"
-                :key="menuItem.id"
-                :menu-item="menuItem"
-                class="menu-list__item"
-              ></base-menu-item>
-            </ul>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="text-center">
+          <base-button
+            @click="loadMenu"
+            mode="btn--primary"
+            v-show="buttonIsVisible"
+          >
+            Schau dir unsere Speisekarte an
+          </base-button>
+          <ProgressSpinner
+            v-if="isLoading"
+            style="width: 50px; height: 50px; margin-top: 10px"
+          />
+        </div>
+        <div v-if="menuCategory" class="menu">
+          <div
+            :key="menuCategory.categories"
+            class="grid--default grid-2--tablet-landscape-up"
+          >
+            <div
+              v-for="category in menuCategory"
+              :key="category.name"
+              class="menu-item__item-category grid-item"
+            >
+              <h2>{{ category.name }}</h2>
+              <ul>
+                <base-menu-item
+                  v-for="menuItem in category.items"
+                  :key="menuItem.id"
+                  :menu-item="menuItem"
+                  class="menu-list__item"
+                ></base-menu-item>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -50,16 +65,15 @@ export default {
   },
   methods: {
     async loadMenu() {
-      
       this.buttonIsVisible = false;
       this.isLoading = true;
 
       try {
         const response = await fetch("/.netlify/functions/api/menu");
         const data = await response.json();
-        
+
         if (data && data[0] && data[0].categories) {
-          this.menuCategory = data[0].categories; 
+          this.menuCategory = data[0].categories;
 
           return data;
         } else {
@@ -80,7 +94,7 @@ export default {
 <style lang="scss" scoped>
 h2 {
   @include responsive-font-size(3rem, 4rem);
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   margin-bottom: 1em;
 }
 .grid-2--tablet-landscape-up {
@@ -110,7 +124,6 @@ h2 {
   padding-inline: 0;
   position: relative;
 }
-
 </style>
 
 <style lang="scss">
@@ -119,7 +132,7 @@ h2 {
     margin: 0 0 0.5em 0;
     position: relative;
     width: 100%;
-    
+
     &--title {
       background-color: $color-background;
       position: relative;
@@ -128,7 +141,11 @@ h2 {
   }
 
   .dots {
-    background-image: radial-gradient(circle closest-side, currentColor 99%, transparent 1%);
+    background-image: radial-gradient(
+      circle closest-side,
+      currentColor 99%,
+      transparent 1%
+    );
     background-position: bottom;
     background-repeat: repeat-x;
     background-size: 6px 3px;
@@ -163,5 +180,4 @@ h2 {
 .p-progress-path {
   color: $color-primary;
 }
-
 </style>

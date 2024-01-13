@@ -1,29 +1,31 @@
 <template>
-  <section>
-    <div class="inner">
-      <h1 class="text-center">Contact Us</h1>
-    </div>
-  </section>
-  <section>
-    <div class="inner">
-      <div class="grid--default grid-2--tablet-landscape-up">
-        <div class="grid-item">
-          <h2>Book a Table</h2>
-          <p class="reservation-info">
-            Wir nehmen jeden Tag gerne Reservierungen entgegen und sind zu
-            unseren Öffnungszeiten:
-            <span>{{ lunchTime }}</span>
-            <span>{{ dinnerTime }}</span>
-            <span>telefonisch erreichbar unter:</span>
-            <a class="link" :href="'tel:' + phoneNumber" style="margin: 0; padding: 0;">{{ phoneNumber }}</a>
-          </p>
-        </div>
-        <div class="grid-item">
-          <contact-form></contact-form>
+  <div>
+    <section>
+      <div class="inner">
+        <h1 class="text-center">Contact Us</h1>
+      </div>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="grid--default grid-2--tablet-landscape-up">
+          <div class="grid-item">
+            <h2>Book a Table</h2>
+            <p class="reservation-info">
+              Wir nehmen jeden Tag gerne Reservierungen entgegen und sind zu
+              unseren Öffnungszeiten:
+              <span>{{ lunchTime }}</span>
+              <span>{{ dinnerTime }}</span>
+              <span>telefonisch erreichbar unter:</span>
+              <a class="link" :href="'tel:' + phoneNumber" style="margin: 0; padding: 0;">{{ phoneNumber }}</a>
+            </p>
+          </div>
+          <div class="grid-item">
+            <contact-form></contact-form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
