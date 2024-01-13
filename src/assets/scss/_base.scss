@@ -15,12 +15,17 @@ $color-white: #fff;
 $color-black: #000;
 
 // custom colors
-$color-background: #fbf8ef;
+$color-background: #FEFCF9;
+$color-background-accent: #F2F0EC;
 $color-background-dark: #121212;
-$color-body: #3b353b;
+$color-body: #323337;
 $color-primary: #c59458;
 $color-primary-light: #d7b386;
+$color-secondary: #120f55;
 $color-error: #d50042;
 
 // transition
 $transition-timing: ease-in-out .3s;
+
+//header-height - necessary for mobile
+$header-height-mobile: 85px;

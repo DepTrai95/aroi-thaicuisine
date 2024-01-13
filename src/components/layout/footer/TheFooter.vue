@@ -56,7 +56,8 @@ h4 {
 }
 
 .footer-links {
-  background-color: $color-body;
+  background-color: $color-background-accent;
+  color: $color-body;
   margin: 0;
   padding: 2em 0;
   text-align: center;
@@ -67,7 +68,6 @@ h4 {
   }
 
   a {
-    color: #fff;
     position: relative;
     text-decoration: none;
   }

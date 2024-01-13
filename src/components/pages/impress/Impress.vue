@@ -36,13 +36,13 @@
 
 <style lang="scss" scoped>
 h2 {
-  @include responsive-font-size(3rem, 4rem);
+  @include responsive-font-size(2.4rem, 4rem);
   font-family: "Open Sans", sans-serif;
   margin-block: 4rem;
 }
 
 h3 {
-  @include responsive-font-size(2.4rem, 2.8rem);
+  @include responsive-font-size(2.2rem, 2.6rem);
   font-weight: 500;
   margin-block: 4rem;
 }

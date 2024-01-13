@@ -48,9 +48,11 @@ a {
   font-size: inherit;
   //font-weight: 500;
   height: unset !important;
+  justify-content: center;
   line-height: 1.3;
   margin-block: 1rem;
   min-height: 3em;
+  min-width: 170px;
   padding: 8px 1.5em;
   text-decoration: none;
   transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in;

@@ -76,7 +76,10 @@ export default {
 .p-card {
   border-radius: 10px;
   box-shadow: 0px 5px 20px 0px rgba(80, 80, 80, 0.2);
-  padding: 1rem;
+  
+  @include for-tablet-portrait-up {
+    padding: 1rem;
+  }
 
   &-title {
     @include responsive-font-size(1.8rem, 2rem);
@@ -90,6 +93,11 @@ export default {
 
 .p-timeline-event {
   min-height: 150px;
+
+  @include for-phone-only {
+    margin: 0 -2rem;
+    padding: 0;
+  }
 }
 
 .p-timeline-event-marker {
