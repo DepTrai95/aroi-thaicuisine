@@ -46,9 +46,13 @@ export default {
 }
 
 .footer-content {
-  @include responsive-font-size(1.8rem, 2rem);
+  @include responsive-font-size(1.6rem, 1.8rem);
   margin: 0 auto;
   padding-block: 3.5em;
+}
+
+h4 {
+  @include responsive-font-size(1.8rem, 2rem);
 }
 
 .footer-links {

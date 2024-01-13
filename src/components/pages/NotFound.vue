@@ -6,7 +6,7 @@
         <p>
           Diese Seite konnte leider nicht gefunden werden. <br>
           Zurück zur
-          <router-link to="/">Startseite</router-link>
+          <router-link to="/" class="link">Startseite</router-link>
         </p>
       </div>
    </div>
