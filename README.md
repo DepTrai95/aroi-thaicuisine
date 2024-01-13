@@ -1,6 +1,13 @@
-# Vue 3 + Vite
+# My Vite-powered Vue-Restaurant-Template
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This template should help anyone have a quick Vue-restaurant-website. 
+
+This project is currentliy specifically built to be hosted on [Netlify](https://www.netlify.com/), as it used [Netlify Functions](https://www.netlify.com/platform/core/functions/) to send E-Mails and have an simple API-Endpoint for the restaurant menu and menu-items.
+
+The menu which is rendered with an API-Endpoint provided from [Netlify Functions](https://www.netlify.com/platform/core/functions/) can be edited in the `.netlify/functions/api.js` file. I am fully aware that the file is way too long this way, but it was fully experimential and I tried solving this without an local JSON-file.
+
+The contact form is powered with [SendGrid](https://app.sendgrid.com/) which has good documentations and a very easy way to setup the project. All you need is to follow their instructions and implement their API-Key in your project/Netlify Environments. 
+You can test it the menu-fetching and the contact-form locally by installing the [Netlify CLI](https://www.netlify.com/platform/core/cli/) and setup your SendGrid.
 
 ## Recommended IDE Setup
 
