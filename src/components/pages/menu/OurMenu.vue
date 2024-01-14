@@ -96,8 +96,17 @@ h2 {
 .grid-2--tablet-landscape-up {
   flex-wrap: wrap;
 
-  > .grid-item {
-    padding-inline: 30px 0;
+  @include for-tablet-landscape-up {
+    > .grid-item {
+  
+      &:nth-child(odd) {
+        padding-inline: 30px 0;
+      }
+  
+      &:nth-child(even) {
+        padding-inline: 30px;
+      }
+    }
   }
 }
 
@@ -152,7 +161,7 @@ h2 {
     margin: 0;
     position: absolute;
     right: 0;
-    top: 18px;
+    top: 16px;
     z-index: 1;
   }
 
