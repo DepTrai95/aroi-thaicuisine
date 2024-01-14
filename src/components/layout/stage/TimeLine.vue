@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="inverted">
     <div class="inner">
       <div class="grid--default grid-2--tablet-landscape-up">
         <div class="grid-item center-vertically">
@@ -15,7 +15,7 @@
             >
           </div>
         </div>
-        <div class="grid-item" :class="{ 'margin-top': hasTimeline }">
+        <div class="grid-item" :class="{ 'padding-block': hasTimeline }">
           <Timeline :value="events" align="alternate">
             <template #content="slotProps">
               <Card>
@@ -81,6 +81,10 @@ export default {
     padding: 1rem;
   }
 
+  &-body {
+    text-align: start;
+  }
+
   &-title {
     @include responsive-font-size(1.8rem, 2rem);
   }
@@ -88,6 +92,12 @@ export default {
   &-content {
     @include responsive-font-size(1.4rem, 1.6rem);
     line-height: 1.4;
+  }
+
+  &-title {
+    .inverted & {
+      color: $color-primary;
+    }
   }
 }
 
@@ -101,10 +111,22 @@ export default {
 }
 
 .p-timeline-event-marker {
+  background-color: transparent;
   border-color: $color-primary;
   height: 2em;
   width: 2em;
 }
 </style>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.inverted {
+  background-color: $color-background-dark;
+  color: $color-white;
+}
+
+h2 {
+  color: $color-primary;
+}
+
+
+</style>

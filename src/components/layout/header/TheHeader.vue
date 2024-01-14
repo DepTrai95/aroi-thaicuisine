@@ -5,7 +5,7 @@
         <div class="logo">
           <router-link to="/">
             <img
-              src="../../../assets/img/aroi.jpeg"
+              src="../../../assets/img/aroi.webp"
               alt="zur Startseite"
               height="80"
               width="80"

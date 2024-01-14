@@ -1,45 +1,41 @@
 <template>
-  <div>
+  <div class="inner">
     <section>
-      <div class="inner">
-        <h1 class="text-center">Our Menu</h1>
-      </div>
+      <h1 class="text-center">Our Menu</h1>
     </section>
     <section>
-      <div class="inner">
-        <div class="text-center">
-          <base-button
-            @click="loadMenu"
-            mode="btn--primary"
-            v-show="buttonIsVisible"
-          >
-            Schau dir unsere Speisekarte an
-          </base-button>
-          <ProgressSpinner
-            v-if="isLoading"
-            style="width: 50px; height: 50px; margin-top: 10px"
-          />
-        </div>
-        <div v-if="menuCategory" class="menu">
+      <div class="text-center">
+        <base-button
+          @click="loadMenu"
+          mode="btn--primary"
+          v-show="buttonIsVisible"
+        >
+          Schau dir unsere Speisekarte an
+        </base-button>
+        <ProgressSpinner
+          v-if="isLoading"
+          style="width: 50px; height: 50px; margin-top: 10px"
+        />
+      </div>
+      <div v-if="menuCategory" class="menu">
+        <div
+          :key="menuCategory.categories"
+          class="grid--default grid-2--tablet-landscape-up"
+        >
           <div
-            :key="menuCategory.categories"
-            class="grid--default grid-2--tablet-landscape-up"
+            v-for="category in menuCategory"
+            :key="category.name"
+            class="menu-item__item-category grid-item"
           >
-            <div
-              v-for="category in menuCategory"
-              :key="category.name"
-              class="menu-item__item-category grid-item"
-            >
-              <h2>{{ category.name }}</h2>
-              <ul>
-                <base-menu-item
-                  v-for="menuItem in category.items"
-                  :key="menuItem.id"
-                  :menu-item="menuItem"
-                  class="menu-list__item"
-                ></base-menu-item>
-              </ul>
-            </div>
+            <h2>{{ category.name }}</h2>
+            <ul>
+              <base-menu-item
+                v-for="menuItem in category.items"
+                :key="menuItem.id"
+                :menu-item="menuItem"
+                class="menu-list__item"
+              ></base-menu-item>
+            </ul>
           </div>
         </div>
       </div>

@@ -46,7 +46,6 @@ a {
   color: inherit;
   cursor: pointer;
   font-size: inherit;
-  //font-weight: 500;
   height: unset !important;
   justify-content: center;
   line-height: 1.3;
@@ -55,11 +54,7 @@ a {
   min-width: 170px;
   padding: 8px 1.5em;
   text-decoration: none;
-  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in;
-
-  &:hover {
-    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.3);
-  }
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in, color 0.3s ease-in-out;
 
   + .btn--primary,
   + .btn--secondary {
@@ -71,10 +66,16 @@ a {
   background-color: $color-primary;
   color: $color-white;
 
-  // &:hover {
-  //   background-color: transparent;
-  //   border-color: $color-primary;
-  //   color: $color-primary;
-  // }
+  &:hover {
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.3);
+  }
+}
+
+.btn--secondary {
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+  
 }
 </style>

@@ -18,9 +18,11 @@
       <LinkRouter link="/impressum" label="Impressum" />
       <LinkRouter link="/menu" label="Menu" />
       <li>
-        <a href="https://www.facebook.com/p/Aroi-Thai-Cuisine-100078777161780/"
-          >Aroi on Facebook</a
+        <a href="https://www.facebook.com/p/Aroi-Thai-Cuisine-100078777161780/">Our Facebook</a
         >
+      </li>
+      <li>
+        <a href="https://www.instagram.com/aroi.thaicuisine">Our Instagram</a>
       </li>
     </ul>
   </footer>

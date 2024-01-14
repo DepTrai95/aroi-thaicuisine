@@ -5,18 +5,17 @@
       <p>
         Einfach der Place to be für alle Foodies, die es schnell, lecker und
         preiswert lieben – hier bei AROI wird alles frisch & mit Liebe für Dich
-        zubereitet.
+        zubereitet. Alles in einem gemütlichen Ambiente.
       </p>
       <div class="text-center">
-        <base-button mode="btn--secondary" >Erfahre mehr</base-button>
+        <base-button mode="btn--secondary" @click="scrollToTimeLine" >Erfahre mehr</base-button>
         <base-button
           link
-          :to='test'
+          :to='menu'
           mode="btn--primary"
         >Zur Speisekarte</base-button>
       </div>
-      <!-- <img src="../../../assets/img/red-curry.webp" alt="" class="margin-top" loading="lazy" height="1280" width="1920"/> -->
-      <img src="../../../assets/img/red-curry.webp" alt="" class="margin-top"/>
+      <img src="../../../assets/img/curry.webp" alt="" width="600" class="margin-top"/>
 
     </div>
   </section>
@@ -24,9 +23,20 @@
 
 <script>
 export default {
+  props: {
+    scrollToTimeline: Function,
+  },
+
    data() {
     return {
-      test: '/menu'
+      menu: '/menu'
+    }
+   },
+   methods: {
+    scrollToTimeLine() {
+      if (typeof this.scrollToTimeline === "function") {
+        this.scrollToTimeline();
+      }
     }
    }
 }
