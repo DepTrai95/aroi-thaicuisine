@@ -103,7 +103,7 @@ export default {
       const observerMenu = new IntersectionObserver(
         (entries) => this.observeElement(entries, 'menu', observerMenu),
         {
-          threshold: [0.5, 0.7, 0.9],
+          threshold: [0.1],
         }
       );
 
@@ -122,6 +122,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  margin-bottom: 0;
+}
+
 h2 {
   @include responsive-font-size(3rem, 4rem);
   font-family: "Open Sans";
@@ -145,7 +149,7 @@ h2 {
 }
 
 .menu-item__item-category {
-  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 
   ul {
     margin: 0;
