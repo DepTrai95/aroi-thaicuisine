@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="submitForm" class="form">
     <!-- NAME -->
     <div class="form-group" :class="{ invalid: !name.isValid }">
       <label for="name"> Name <abbr title="Pflichtfeld">*</abbr> </label>
@@ -237,6 +237,21 @@ function generateRandomMathProblem() {
 </script>
 
 <style lang="scss" scoped>
+
+.form {
+  background-color: $color-primary-lightest;
+  border-radius: 4px;
+  padding: 2rem;
+
+  @include for-tablet-portrait-up {
+    padding: 3.5rem;
+  }
+
+  @include for-tablet-landscape-up {
+    margin: -3rem;
+  }
+}
+
 .form-group {
   margin-bottom: 2rem;
 }
@@ -248,19 +263,17 @@ function generateRandomMathProblem() {
   display: block;
   color: $color-body;
   font-family: inherit;
-  min-height: 5rem;
   line-height: 1.3;
+  min-height: 5rem;
+  outline: none;
   padding: 1rem 2rem;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: border 0.3s;
   width: 100%;
 
   &:hover,
-  &:focus {
-    border-color: $color-primary;
-  }
-
-  &:focus {
-    background-color: $color-background;
+  &:focus,
+  &:focus-visible {
+    border: 2px solid $color-primary;
   }
 }
 
@@ -294,10 +307,8 @@ textarea {
 <style lang="scss">
 .p-calendar {
   border-radius: 4px;
-  border: 2px solid transparent;
   color: $color-body;
   min-height: 5rem;
-  transition: background-color 0.3s, border-color 0.3s;
   width: 100%;
 }
 
@@ -308,12 +319,13 @@ textarea {
   box-shadow: none;
   color: $color-body;
   padding: 1rem 2rem;
+  transition: background-color 0.3s, border-color 0.3s;
 
   &:hover,
   &:focus,
-  &:focus-visible,
-  &:focus-within {
-    border-color: $color-primary;
+  &:focus-within,
+  &:focus-visible {
+    border: 2px solid $color-primary;
   }
 
   &:focus {

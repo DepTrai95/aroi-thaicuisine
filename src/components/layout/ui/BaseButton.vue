@@ -40,7 +40,7 @@ a {
 .btn--primary,
 .btn--secondary {
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: 0px 5px 20px 5px rgba(80, 80, 80, 0.2);
   color: inherit;
@@ -68,14 +68,16 @@ a {
   color: $color-white;
 
   &:hover {
-    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.3);
+    background-color: $color-background;
+    border-color: $color-primary;
+    box-shadow: 0px 10px 20px 10px rgba(80, 80, 80, 0.3);
+    color: $color-primary;
   }
 }
 
 .btn--secondary {
   &:hover {
-    border-color: $color-primary;
-    outline: 1px solid $color-primary;
+    box-shadow: 0px 5px 20px 10px rgba(80, 80, 80, 0.3);
   }
   
 }

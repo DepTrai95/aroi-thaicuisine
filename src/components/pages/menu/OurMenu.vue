@@ -25,7 +25,7 @@
           <div
             v-for="category in menuCategory"
             :key="category.name"
-            class="menu-item__item-category grid-item"
+            class="menu-item__item-category grid-item fade-animation"
           >
             <h2>{{ category.name }}</h2>
             <ul>
@@ -81,9 +81,43 @@ export default {
         throw error;
       } finally {
         this.isLoading = false;
+
+        //only set intersection observer after loading/rendering the menu
+        this.$nextTick(() => {
+          this.initIntersectionObserver();
+        });
       }
     },
+    observeElement(entries, targetName, observerInstance) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (targetName === 'menu') {
+            entry.target.classList.add("fade-in");
+          }
+
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    },
+    initIntersectionObserver() {
+      const observerMenu = new IntersectionObserver(
+        (entries) => this.observeElement(entries, 'menu', observerMenu),
+        {
+          threshold: [0.5, 0.7, 0.9],
+        }
+      );
+
+      const targetMenuItem = document.querySelectorAll('.menu-item__item-category');
+
+      targetMenuItem.forEach(element => {
+        observerMenu.observe(element);
+      });
+    },
   },
+  mounted() {
+    this.initIntersectionObserver();
+  },
+
 };
 </script>
 
@@ -110,11 +144,9 @@ h2 {
   }
 }
 
-.menu {
-  margin-top: 3em;
-}
-
 .menu-item__item-category {
+  margin-top: 2.5em;
+
   ul {
     margin: 0;
     padding: 0;
