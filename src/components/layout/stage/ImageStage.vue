@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       fadeIn: false,
+      isMobile: window.innerWidth <= 599,
     };
   },
   mounted() {
@@ -93,7 +94,7 @@ export default {
     const observerImage = new IntersectionObserver(
       (entries) => this.observeElement(entries, 'img-container'),
       {
-        threshold: [0.5],
+        threshold: this.isMobile ? [0.1, 0.3, 0.5, 0.7, 0.9] : [0.5],
       }
     );
 
@@ -163,15 +164,27 @@ section {
     transition: transform .5s ease-in, opacity 1s ease-in;
     
     &:nth-child(1) {
-      transform: translate(-100%, 0);
+      transform: translate(0, 50%);
+
+      @include for-tablet-portrait-up {
+        transform: translate(-100%, 0);
+      }
     }
   
     &:nth-child(2) {
-      transform: translate(0, 33%);
+      transform: translate(0, 50%);
+      
+      @include for-tablet-portrait-up {
+        transform: translate(0, 33%);
+      }
     }
   
     &:nth-child(3) {
-      transform: translate(100%, 0);
+      transform: translate(0, 50%);
+
+      @include for-tablet-portrait-up {
+        transform: translate(100%, 0);
+      }
     }
 
     @include for-tablet-portrait-up {

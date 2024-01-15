@@ -15,7 +15,7 @@
           >Zur Speisekarte</base-button
         >
         <img
-          src="../../../assets/img/curry.webp"
+          src="/curry.webp"
           alt=""
           width="600"
           class="margin-top"
@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     let timeOut = null;
-    window.innerWidth <= 599 ? timeOut = 250 : timeOut = 500
+    this.isMobile ? timeOut = 0 : timeOut = 500
     setTimeout(() => {
       document.querySelectorAll('.stage .fade-animation').forEach(element => {
         element.classList.add('fade-in');
