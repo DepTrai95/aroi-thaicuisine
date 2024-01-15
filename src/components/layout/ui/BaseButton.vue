@@ -52,9 +52,10 @@ a {
   margin-block: 1rem;
   min-height: 3em;
   min-width: 170px;
+  outline: 1px solid transparent;
   padding: 8px 1.5em;
   text-decoration: none;
-  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in, color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, box-shadow 0.3s ease-in, color 0.3s ease-in-out, outline 0.3s ease-in-out;
 
   + .btn--primary,
   + .btn--secondary {
@@ -73,8 +74,8 @@ a {
 
 .btn--secondary {
   &:hover {
-    background-color: $color-primary;
-    color: $color-white;
+    border-color: $color-primary;
+    outline: 1px solid $color-primary;
   }
   
 }

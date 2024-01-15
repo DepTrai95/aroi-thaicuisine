@@ -85,41 +85,40 @@ export default {
   },
   mounted() {
     const observerText = new IntersectionObserver(
-      (entries) => this.observeElement(entries, 'section-header'),
+      (entries) => this.observeElement(entries, 'section-header', observerText),
       {
         threshold: [0.7],
       }
     );
 
     const observerImage = new IntersectionObserver(
-      (entries) => this.observeElement(entries, 'img-container'),
+      (entries) => this.observeElement(entries, 'img-container', observerImage),
       {
         threshold: this.isMobile ? [0.1, 0.3, 0.5, 0.7, 0.9] : [0.5],
       }
     );
 
     const targetText = document.querySelector(".section-header");
-    const targetImages = document.querySelector('.img-container');
+    // const targetImages = document.querySelector('.img-container');
+    const targetImages = document.querySelectorAll('.img-container--element');
     observerText.observe(targetText);
-    observerImage.observe(targetImages);
+    // observerImage.observe(targetImages);
+
+    targetImages.forEach(element => {
+      observerImage.observe(element)
+    });
   },
   methods: {
-    observeElement(entries, targetName) {
+    observeElement(entries, targetName, observerInstance) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           if (targetName === 'img-container') {
-            entry.target.querySelectorAll(".img-container--element").forEach(element => {
-              element.classList.add("fade-in");
-            });
+            entry.target.classList.add("fade-in");
           } else if (targetName === 'section-header') {
             entry.target.classList.add("fade-in");
           }
 
-          if (targetName === 'text') {
-            observerText.unobserve(entry.target);
-          } else if (targetName === 'image') {
-            observerImage.unobserve(entry.target);
-          }
+          observerInstance.unobserve(entry.target);
         }
       });
     },

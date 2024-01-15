@@ -2,7 +2,7 @@
   <section class="timeline inverted">
     <div class="inner">
       <div class="grid--default grid-2--tablet-landscape-up">
-        <div class="grid-item center-vertically fade-animation">
+        <div class="grid-item fade-animation" :class="{'center-vertically': !isMobile, 'padding-block': isMobile }">
           <h2>Discover amazing flavours</h2>
           <p>
             Die thailändische Küche ist bekannt für ihre unglaublichen Gewürze
@@ -15,10 +15,10 @@
             >
           </div>
         </div>
-        <div class="grid-item fade-animation" :class="{ 'padding-block': hasTimeline }">
+        <div class="grid-item" :class="{ 'padding-block': hasTimeline }">
           <Timeline :value="events" align="alternate">
             <template #content="slotProps">
-              <Card>
+              <Card class="TEST">
                 <template #title>
                   {{ slotProps.item.headline }}
                 </template>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       hasTimeline: true,
+      isMobile: window.innerWidth <= 599,
       events: [
         {
           headline: "Frische Zutaten",
@@ -64,29 +65,50 @@ export default {
     };
   },
   mounted() {
-    const observer = new IntersectionObserver(
-      (entries) => this.observeElement(entries, observer),
+    document.querySelectorAll('.p-timeline-event').forEach(element => {
+      element.classList.add('fade-animation')
+    });
+    const observerText = new IntersectionObserver(
+      (entries) => this.observeElement(entries, 'text', observerText),
       {
-        threshold: [0.7],
+        threshold: [0.5],
       }
     );
 
-    const targetElements = document.querySelectorAll('.timeline .grid-item');
+    const observerTimeline = new IntersectionObserver(
+      (entries) => this.observeElement(entries, 'timeline', observerTimeline),
+      {
+        threshold: this.isMobile ? [0.7, 0.9] : [0.9],
+      }
+    );
 
-    targetElements.forEach(element => {
-      observer.observe(element);
+    const targetText = document.querySelector(".timeline .grid-item:nth-child(1)");
+    const targetTimeline = document.querySelectorAll('.p-timeline .p-timeline-event');
+    
+    observerText.observe(targetText);
+
+    targetTimeline.forEach(element => {
+      observerTimeline.observe(element)
     });
   },
   methods: {
-    observeElement(entries, observer) {
+    observeElement(entries, targetName, observerInstance) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
+          if (targetName === 'timeline') {
+            entry.target.classList.add("fade-in");
+            setTimeout(() => {
+              const connectorElement = entry.target?.previousElementSibling?.querySelector('.p-timeline-event-connector');
+              if (connectorElement) connectorElement.classList.add('active');
+            }, 100);
+          } else if (targetName === 'text') {
+            entry.target.classList.add("fade-in");
+          }
+
+          observerInstance.unobserve(entry.target);
         }
       });
     },
-
   },
 };
 </script>
@@ -138,9 +160,23 @@ export default {
 .p-timeline-event-marker {
   background-color: transparent;
   border-color: $color-primary;
-  height: 2em;
-  width: 2em;
+  height: 1.5em;
+  width: 1.5em;
 }
+
+.p-timeline-event-connector {
+  flex-grow: 1;
+  max-height: 0; 
+  overflow: hidden;
+  transition: max-height 1s ease; 
+  width: 2px;
+}
+
+.p-timeline-event-connector.active {
+  max-height: 100vh; 
+}
+
+
 </style>
 
 <style lang="scss" scoped>
