@@ -5,10 +5,10 @@
 
 
 .grid--default {
-   --content-padding: 60px;
+   --content-padding: 40px;
 
    @include for-tablet-landscape-up {
-      --content-padding: 90px;
+      --content-padding: 60px;
    }
 }
 

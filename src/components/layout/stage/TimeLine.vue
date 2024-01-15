@@ -1,8 +1,8 @@
 <template>
-  <section class="inverted">
+  <section class="timeline inverted">
     <div class="inner">
       <div class="grid--default grid-2--tablet-landscape-up">
-        <div class="grid-item center-vertically">
+        <div class="grid-item center-vertically fade-animation">
           <h2>Discover amazing flavours</h2>
           <p>
             Die thailändische Küche ist bekannt für ihre unglaublichen Gewürze
@@ -15,7 +15,7 @@
             >
           </div>
         </div>
-        <div class="grid-item" :class="{ 'padding-block': hasTimeline }">
+        <div class="grid-item fade-animation" :class="{ 'padding-block': hasTimeline }">
           <Timeline :value="events" align="alternate">
             <template #content="slotProps">
               <Card>
@@ -62,6 +62,31 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    const observer = new IntersectionObserver(
+      (entries) => this.observeElement(entries, observer),
+      {
+        threshold: [0.7],
+      }
+    );
+
+    const targetElements = document.querySelectorAll('.timeline .grid-item');
+
+    targetElements.forEach(element => {
+      observer.observe(element);
+    });
+  },
+  methods: {
+    observeElement(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+
   },
 };
 </script>
@@ -128,5 +153,10 @@ h2 {
   color: $color-primary;
 }
 
+.grid-2--tablet-landscape-up > .grid-item {
+  @include for-tablet-landscape-only {
+    padding-inline: 20px;
+  }
+}
 
 </style>

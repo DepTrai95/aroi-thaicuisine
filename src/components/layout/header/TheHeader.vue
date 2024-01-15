@@ -76,12 +76,6 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuExpanded = !this.isMenuExpanded;
-
-      if (this.isMenuExpanded) {
-        this.menuIsClickedToOpen();
-      } else {
-        this.menuIsClosed();
-      }
     },
     throttledCheckIsMobile() {
       if (!this.throttleTimeout) {
@@ -93,21 +87,6 @@ export default {
     },
     checkIsMobile() {
       this.isMobile = window.innerWidth <= 599;
-    },
-    menuIsClickedToOpen() {
-      setTimeout(() => {
-        document
-          .querySelector(".mobile-navigation .nav-main__wrapper")
-          .classList.add("fade-in");
-      }, 200);
-      setTimeout(() => {
-          document.querySelector('.header').classList.add('header-fixed');  //to avoid jumpy animation
-      }, 400);
-    },
-    menuIsClosed() {
-      document
-        .querySelector(".mobile-navigation .nav-main__wrapper")
-        .classList.remove("fade-in");
     },
   },
   mounted() {
@@ -139,15 +118,12 @@ export default {
   background-color: $color-background;
   bottom: 0;
   left: 0;
-  // position: fixed;
+  position: fixed;
   right: 0;
   top: 0;
   z-index: 1001;
 }
 
-.header-fixed {
-  position: fixed
-}
 .logo__container {
   width: auto;
 
@@ -180,9 +156,6 @@ export default {
 
   .nav-main__wrapper {
     display: flex;
-    opacity: 0;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
 
     @include for-phone-only {
       align-items: center;
@@ -195,11 +168,6 @@ export default {
       top: 0;
       width: 100%;
       z-index: 900;
-    }
-
-    &.fade-in {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 

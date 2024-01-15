@@ -39,12 +39,8 @@ main {
       padding: 0 40px;
    }
 
-   @include for-tablet-landscape-up {
-      padding: 0 60px;
-   }
-
    @include for-desktop-up {
-      padding: 0 80px;
+      padding: 0 60px;
    }
 }
 

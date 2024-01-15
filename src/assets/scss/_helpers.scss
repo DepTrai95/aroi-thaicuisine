@@ -25,3 +25,14 @@
 .padding-block {
    padding-block: 3em;
 }
+
+.fade-animation {
+   opacity: 0;
+   transform: translate(0, 50px);
+   transition: transform .3s ease-in, opacity 0.3s ease-in;
+}
+
+.fade-in {
+   opacity: 1;
+   transform: translate(0, 0);
+}

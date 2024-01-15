@@ -1,13 +1,13 @@
 <template>
-  <section>
+  <section class="stage">
     <div class="inner" :class="{'effect': isMobile}">
       <h1>Willkommen bei AROI!</h1>
-      <p class="effect">
+      <p class="fade-animation">
         Einfach der Place to be für alle Foodies, die es schnell, lecker und
         preiswert lieben – hier bei AROI wird alles frisch & mit Liebe für Dich
         zubereitet. Alles in einem gemütlichen Ambiente.
       </p>
-      <div class="text-center effect">
+      <div class="text-center fade-animation">
         <base-button mode="btn--secondary" @click="scrollToTimeLine"
           >Erfahre mehr</base-button
         >
@@ -48,7 +48,7 @@ export default {
     let timeOut = null;
     window.innerWidth <= 599 ? timeOut = 250 : timeOut = 500
     setTimeout(() => {
-      document.querySelectorAll('.effect').forEach(element => {
+      document.querySelectorAll('.stage .fade-animation').forEach(element => {
         element.classList.add('fade-in');
       });
     }, timeOut);
@@ -86,14 +86,4 @@ p {
   font-weight: 500;
 }
 
-.effect {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .3s ease-in-out, transform .3s ease-in;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
 </style>
