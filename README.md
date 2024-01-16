@@ -1,6 +1,6 @@
 # My Vite-powered Vue-Restaurant-Template
 
-This template should help anyone have a quick Vue-restaurant-website. 
+This is a template created from me, so that in the future I can have quick restaurant-website. It is using Vue 3 with Vite and PrimeVue as UI-Library. I was using the Options API here, as it was easier to get used to Vue.js and is preferred for rather small sites like this one.
 
 This project is currentliy specifically built to be hosted on [Netlify](https://www.netlify.com/), as it used [Netlify Functions](https://www.netlify.com/platform/core/functions/) to send E-Mails and have an simple API-Endpoint for the restaurant menu and menu-items.
 
