@@ -26,10 +26,6 @@ body {
    padding: 0;
 }
 
-main {
-   overflow: hidden;
-}
-
 .inner {
    margin: 0 auto;
    max-width: $content-max-width - (2 * $content-padding);
