@@ -200,7 +200,7 @@ export default {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              to: "info@aroi-dresden.de", // set email of receiver
+              to: "info@aroi-thaicuisine.de", // set email of receiver
               name: formData.name,
               email: formData.email,
               text: formData.message,
