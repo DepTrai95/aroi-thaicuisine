@@ -17,6 +17,8 @@
               <span>{{ dinnerTime }}</span>
               <span>telefonisch erreichbar unter:</span>
               <a class="link" :href="'tel:' + phoneNumber" style="margin: 0; padding: 0;">{{ phoneNumber }}</a>
+              <span>oder direkt über Mail an (aktuell hat das Formular noch Probleme)</span>
+              <a class="link" :href="'mailto:' + mailTo" style="margin: 0; padding: 0;">{{ mailTo }}</a>
             </p>
           </div>
           <div class="grid-item">
@@ -41,6 +43,7 @@ export default {
       phoneNumber: "0351 31299599",
       lunchTime: "11:30 - 14:30",
       dinnerTime: "17:00 - 22:00",
+      mailTo: "info@aroi-dresden.de"
     };
   },
 };
