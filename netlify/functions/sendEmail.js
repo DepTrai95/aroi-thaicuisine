@@ -8,7 +8,11 @@ export const handler = async (event, context) => {
 
     const msg = {
       to: to,
-      from: 'info@aroi-dresden.de',
+      from: {
+        email: 'info@aroi-thaicuisine.de',
+        name: name, 
+      },
+
       subject: `Reservierung für den: ${date}`,
       text: text,
       replyTo: {
