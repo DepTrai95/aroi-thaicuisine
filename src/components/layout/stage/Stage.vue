@@ -57,6 +57,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.stage {
+  min-height: 100vh;
+}
+
 h1 {
   animation: typing 1s steps(100, end);
   margin-bottom: 0.25em;
