@@ -18,6 +18,7 @@
         />
       </div>
       <div v-if="menuCategory" class="menu">
+        <p>Alle Speisen und Preise Stand 19.01.2024</p>
         <div
           :key="menuCategory.categories"
           class="grid--default grid-2--tablet-landscape-up"
@@ -81,7 +82,7 @@ export default {
         throw error;
       } finally {
         this.isLoading = false;
-
+        
         //only set intersection observer after loading/rendering the menu
         this.$nextTick(() => {
           this.initIntersectionObserver();

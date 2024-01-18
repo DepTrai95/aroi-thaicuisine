@@ -19,8 +19,8 @@
           <source
             type="image/webp"
             srcset="
-              ../../../assets/img/pad-thai.webp     400w,
-              ../../../assets/img/pad-thai-med.webp 600w
+              ../../../assets/img/pad-thai-small.webp 400w,
+              ../../../assets/img/pad-thai.webp 600w
             "
             sizes="(max-width: 599px) 300px, 600px"
           />
@@ -38,8 +38,8 @@
           <source
             type="image/webp"
             srcset="
-              ../../../assets/img/red-curry.webp     400w,
-              ../../../assets/img/red-curry-med.webp 600w
+              ../../../assets/img/red-curry-small.webp 400w,
+              ../../../assets/img/red-curry.webp 600w
             "
             sizes="(max-width: 599px) 300px, 600px"
           />
@@ -57,8 +57,8 @@
           <source
             type="image/webp"
             srcset="
-              ../../../assets/img/crispy-duck.webp     400w,
-              ../../../assets/img/crispy-duck-med.webp 600w
+              ../../../assets/img/crispy-duck-small.webp 400w,
+              ../../../assets/img/crispy-duck.webp 600w
             "
             sizes="(max-width: 599px) 300px, 600px"
           />

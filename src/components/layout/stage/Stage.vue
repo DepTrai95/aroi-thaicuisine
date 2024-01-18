@@ -14,12 +14,22 @@
         <base-button link :to="menu" mode="btn--primary"
           >Zur Speisekarte</base-button
         >
-        <img
-          src="/curry.webp"
-          alt=""
-          width="600"
-          class="margin-top"
-        />
+        <picture>
+            <source
+              type="image/webp"
+              srcset="
+              ../../../assets/img/curry-small.webp 400w,
+              ../../../assets/img/curry.webp 600w
+            "
+              sizes="(max-width: 599px) 300px, 600px"
+            />
+            <img
+              src="../../../assets/img/curry.webp"
+              width="400"
+              alt=""
+              class="margin-top"
+            />
+          </picture>
       </div>
     </div>
   </section>
