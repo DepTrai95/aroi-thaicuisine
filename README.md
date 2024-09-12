@@ -35,7 +35,7 @@ You can test it the menu-fetching and the contact-form locally by installing the
 ### Tech-Stack
 
 - [Vue.js](https://vuejs.org/)
-- [PrimeVue]((https://primevue.org/)
+- [PrimeVue](https://primevue.org/)
 
 ### Dependencies
 
